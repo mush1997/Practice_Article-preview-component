@@ -1,0 +1,353 @@
+$very_dark_grayish_blue: hsl(217, 19%, 35%);
+$desaturated_dark_blue: hsl(214, 17%, 51%);
+$grayish_blue: hsl(212, 23%, 69%);
+$light_grayish_blue: hsl(210, 46%, 95%);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Manrope;
+    font-size: 13px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $light_grayish_blue;
+
+    main {
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 0 8px 4px #ddd;
+        width: 75%;
+        max-width: 1200px;
+        display: flex;
+
+        .pic {
+            width: 45%;
+            object-fit: cover;
+            object-position: top;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .post {
+            padding: 50px 40px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            article {
+                margin-bottom: 20px;
+                flex-basis: 70%;
+
+                h1 {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: $very_dark_grayish_blue;
+                    margin-bottom: 20px;
+                }
+
+                p {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    color: $desaturated_dark_blue;
+                    line-height: 1.6;
+                    word-spacing: 2px;
+                }
+            }
+
+            section {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .notes {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 50px;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                    }
+
+                    hgroup {
+                        padding: 10px;
+
+                        h2 {
+                            font-size: 1.1rem;
+                            font-weight: 700;
+                            color: $very_dark_grayish_blue;
+                            margin-bottom: 6px;
+                        }
+
+                        p {
+                            font-size: 1rem;
+                            font-weight: 500;
+                            color: $grayish_blue;
+                            word-spacing: 2px;
+                        }
+                    }
+                }
+
+                .sharing {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    button {
+                        width: 40px;
+                        height: 40px;
+                        background-color: $light_grayish_blue;
+                        border-radius: 50%;
+                        border: none;
+
+                        img {
+                            width: 18px;
+                        }
+                    }
+
+                    button.clicked {
+                        background-color: $desaturated_dark_blue;
+
+                        img {
+                            filter: brightness(250%);
+                        }
+                    }
+
+                    ul {
+                        padding: 0 30px;
+                        width: 240px;
+                        height: 50px;
+                        background-color: $very_dark_grayish_blue;
+                        border-radius: 10px;
+
+                        visibility: hidden;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: absolute;
+                        top: -80px;
+
+                        li {
+                            list-style-type: none;
+                            margin: 0 6px;
+
+                            &:first-child {
+                                text-transform: uppercase;
+                                font-size: 0.9rem;
+                                color: $light_grayish_blue;
+                                letter-spacing: 6px;
+                            }
+
+                            img {
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+
+                    p {
+                        content: "";
+                        width: 20px;
+                        height: 20px;
+                        background-color: $very_dark_grayish_blue;
+
+                        visibility: hidden;
+                        position: absolute;
+                        top: -40px;
+                        transform: rotate(45deg);
+                    }
+
+                    ul.shown,
+                    p.shown {
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:830px) {
+    body {
+        main {
+            width: 80%;
+
+            .post {
+                padding: 30px 30px 20px 30px;
+
+                article {
+
+                    h1 {
+                        font-size: 1.7rem;
+                    }
+
+                    p {
+                        line-height: 1.5;
+                    }
+                }
+
+                section {
+                    .notes {
+                        img {
+                            width: 40px;
+                        }
+
+                        hgroup {
+                            padding: 0px;
+
+                            h2 {
+                                margin-bottom: 4px;
+                            }
+                        }
+                    }
+
+                    .sharing {
+                        button {
+                            width: 30px;
+                            height: 30px;
+
+                            img {
+                                width: 14px;
+                            }
+                        }
+
+                        ul {
+                            padding: 0 10px;
+                            width: 180px;
+
+                            li {
+                                margin: 0 2px;
+
+                                &:first-child {
+                                    letter-spacing: 4px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:650px) {
+    body {
+        padding: 30px 10px;
+
+        main {
+            width: 85%;
+            flex-direction: column;
+            position: relative;
+
+            .pic {
+                width: 100%;
+                max-height: 360px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0px;
+            }
+
+            .post {
+                article {
+                    h1 {
+                        font-size: 1.6rem;
+                    }
+
+                    p {
+                        line-height: 1.4;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                section {
+                    .notes {
+                        img {
+                            margin-right: 16px;
+                        }
+
+                        hgroup {
+                            h2 {
+                                margin-bottom: 4px;
+                            }
+                        }
+                    }
+
+                    .sharing {
+                        position: static;
+
+                        button {
+                            z-index: 10;
+                        }
+
+                        ul {
+                            width: 100%;
+                            height: 80px;
+                            border-radius: 0 0 20px 20px;
+                            justify-content: flex-start;
+                            position: absolute;
+                            top: calc(100% - 80px);
+                            left: 0;
+
+                            li {
+                                margin: 0 10px;
+                            }
+                        }
+
+                        p {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:350px) {
+    body {
+        main {
+            .post {
+                article {
+                    margin-bottom: 30px;
+                }
+
+                section {
+                    .notes {
+                        img {
+                            width: 30px;
+                            margin-right: 10px;
+                        }
+
+                        hgroup {
+                            h2 {
+                                font-size: 1rem;
+                                margin-bottom: 0px;
+                            }
+
+                            p {
+                                font-size: 0.9rem;
+                            }
+                        }
+                    }
+
+                    .sharing {
+                        ul {
+                            li {
+                                margin: 0 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
